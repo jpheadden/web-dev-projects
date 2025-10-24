@@ -1,0 +1,134 @@
+/* -----------------------------
+   dark.css
+   Grayscale-style dark mode
+   ----------------------------- */
+
+body.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Header / Navbar */
+body.dark-mode .navbar {
+  background-color: #1c1c1c !important;
+  color: #ddd !important;
+  box-shadow: none;
+}
+
+body.dark-mode .navbar a.nav-link {
+  color: #ccc !important;
+}
+
+body.dark-mode .navbar a.nav-link:hover {
+  color: #0dcaf0 !important; /* bright cyan hover */
+}
+
+/* Footer */
+body.dark-mode footer {
+  background-color: #1a1a1a !important;
+  color: #999 !important;
+}
+
+/* Buttons */
+body.dark-mode .btn {
+  background-color: #333 !important;
+  color: #f1f1f1 !important;
+  border: 1px solid #555 !important;
+}
+
+body.dark-mode .btn:hover {
+  background-color: #444 !important;
+  border-color: #666 !important;
+}
+
+/* Blog content */
+body.dark-mode .blog-post {
+  background-color: #1e1e1e;
+  color: #ddd;
+  box-shadow: 0 1px 4px rgba(255,255,255,0.05);
+}
+
+/* Links */
+body.dark-mode a {
+  color: #66b2ff !important;
+  text-decoration: underline;
+}
+
+/* Headings */
+body.dark-mode h1, body.dark-mode h2, body.dark-mode h3,
+body.dark-mode h4, body.dark-mode h5, body.dark-mode h6 {
+  color: #fff !important;
+}
+/* Optional: smooth page fade on theme switch */
+body.theme-fade {
+  transition: none !important;
+  opacity: 0;
+}
+
+body.theme-fade.theme-fade-active {
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+/* ================================
+   Blog dark mode (Paul's layout)
+   ================================ */
+
+/* Whole page and main container */
+/* Force dark background even if Bootstrap or Grayscale try to override it */
+body.dark-mode,
+body.dark-mode main,
+body.dark-mode .row,
+body.dark-mode .container,
+body.dark-mode .table {
+  background-color: #121212 !important;
+  background-image: none !important;
+  color: #e0e0e0 !important;
+}
+
+
+/* Headings */
+body.dark-mode h1,
+body.dark-mode h3 {
+  color: #ffffff !important;
+}
+
+/* Table */
+body.dark-mode table,
+body.dark-mode .table {
+  background-color: #1e1e1e !important;
+  color: #e0e0e0 !important;
+  border-color: #333 !important;
+}
+
+body.dark-mode .table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: #222 !important;
+}
+
+body.dark-mode th {
+  background-color: #2a2a2a !important;
+  color: #fff !important;
+}
+
+body.dark-mode td {
+  border-color: #333 !important;
+}
+
+/* Links */
+body.dark-mode a {
+  color: #66b2ff !important;
+}
+body.dark-mode a:hover {
+  color: #0dcaf0 !important;
+}
+
+/* Footer */
+body.dark-mode footer {
+  background-color: #1a1a1a !important;
+  color: #ccc !important;
+}
+
+/* -----------------------------
+   custom.css
+   Custom styles to soften Grayscale theme for a blog
+   ----------------------------- */

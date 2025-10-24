@@ -1,0 +1,49 @@
+<!-- Edit Post with ID <%= post.id %> with confirmation -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%- include("partials/head.ejs") %>
+   
+    <title>Edit Post - <%= post.title %></title>
+
+  </head>
+  
+  <body>
+    <%- include("partials/header.ejs") %>
+
+    <main class="container">
+      <div class="card-body post-card">
+        <img src="/images/demo-image-02.jpg" class="card-img-top" alt="...">
+     
+        <h1>Edit Post - <%= post.title %></h1>
+        <div class="editor-container post-overlay">
+            <form  class="editor-panel" action="/edit/<%= post.id %>" method="POST">
+              <div class="editor-field">
+                  <label for="subject">Subject Matter</label>
+                  <input id="subject" name="subject" type="text" value="<%= post.subject %>">
+               
+                </div>
+                
+                <div class="editor-field">
+                  <label for="title">Title</label>
+                  <input id="title" name="title" type="text" required value="<%= post.title %>">
+                </div>
+                
+                <div class="editor-field">
+                  <label for="content">Content:</label>
+                  <textarea id="content" name="content" required><%= post.content %></textarea>
+                </div>
+                
+                <div class="editor-actions">
+                <button class="btn-primary" type="submit">Update Post</button>
+                <a class="btn-primary" href="/post/<%= post.id %>">Cancel changes</a>
+              </form>
+        </div>
+      </div>
+    </main>
+
+    <%- include("partials/footer.ejs") %>
+  </body>
+</html>

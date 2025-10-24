@@ -1,36 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
+<!--Express renders EJS templates into html and sends them to the browser. -->
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blog of great literary efforts</title>
-</head>
-<html>
-<body>
-  <h1>
-    <!-- Tite goes here -->
-    <%= "Blog of all things seen and unseen" %>
-  </h1>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <%- include("partials/head.ejs") %>
+
+    <title>Blog of great literary efforts</title>
+   
+  </head>
+
+<body> 
+  <%- include("partials/header.ejs") %>
+  <main>
+      <div class="row">
+        <h1 class="mb-4 text-center">  <!--Bootstrap class for margin bottom-->
+        <%= "Blog of all things seen and unseen" %>
+        </h1>
+      </div>
   
-<!-- Header goes here ogr81
-     <%- include("partials/header.ejs") %>
--->
-        <p>
-          <!-- HTML content goes here -->
-           <!-- Form to ask to topic, post, name.-->
-              <form action="/submit" method="POST">
-                <label for="Topic">Topic:</label>
-                <input type="text" name="Topic" required>
-                <label for="Article">Article</label>
-                <input type="text" name="article" required>
-                <input type="submit" value="Save">
-          <%= "Place holder for comment" %>
-         <form action="/post" 
-        </p>
 
-        <!-- Footer goes here -->
-        <%- include("partials/footer.ejs") %>
+    
+    <!--HTML content goes here -->
+     <!--Normal html Anchor tag to tell the browser to go to this url--> 
+     <!--check if posts exist and is an array and has length.
+    console log posts to see what is being passed-->
+ 
+  
+
+      <% if (Array.isArray(posts) && posts.length > 0) { %>  
+        <%= "These are your posts:" %>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Title</th>
+              <th scope="col">Created At</th>
+            </tr>
+          </thead>
+          <tbody> <!--Bootstrap table with striped rows-->
+            <% posts.forEach(post => { %> <!--loop through posts array and display each post title as a link-->
+              <tr> 
+                <td><a href="/post/<%= post.id %>"><%= post.title %></a>
+                </td>
+                <td><%= new Date(post.createdAt).toLocaleString('en-US', {
+                  month: 'short', day: 'numeric', year: 'numeric',
+                  hour: '2-digit', minute: '2-digit', hour12: false
+                  }); %>
+                </td>
+                <td> <!--Link to edit post-->
+                  <a href="/edit/<%= post.id %>?_method=PUT" class="btn btn-primary btn-sm">Edit</a>
+                </td> 
+                <td> <!--Form to delete post-->
+                  <form action="/delete/<%= post.id %>" method="POST" onsubmit="return confirm('Are you sure you want to delete this post?');">
+                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                  </form>
+                </td>
+              </tr> 
+           <% }) %>
+          </tbody>
+        </table>
+        <% } else { %>
+          <%= "No posts yet Muchacho" %>
+       <% } %>
+         
+          
+          
+  <h3><%= "Add a new Post: "  %>  </h3>
+     <a href = "/new">Click here to add a New Post</a>
+ 
+  
+ <!--Bootstrap JS bundle-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> 
+  </main>
+     
+<%- include("partials/footer.ejs") %>
 </body>
-
 </html>

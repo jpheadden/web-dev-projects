@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<%- include("partials/head.ejs") %>
+<title><%= post.title %></title>
+</head>
+  <body>
+    <main class="container">
+   
+    <div class="card-body post-card">
+       <img src="/images/bg-masthead.jpg" class="card-img-top" alt="...">
+      
+      <div class="post-overlay">
+        <h1 class="post-content-box card-title"><%= post.subject %></h1>
+        <h3 class="post-content-box card-title"><%= post.title %></h3>
+          <div class="post-content-box">
+            <p class="post-content"><%= post.content %></p>
+          </div>
+
+          <a class="btn btn-primary" href="/edit/<%= post.id %>">Edit this Post</a>
+
+          <a class="btn btn-secondary" href="/">Back Home Again</a>
+
+      </div>
+      
+    </div>
+    </main>
+  </body
+</html>

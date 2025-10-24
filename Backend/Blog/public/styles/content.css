@@ -1,83 +1,107 @@
-html,
-body {
-  height: 100%;
+/* Post display system */
+.post-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  margin-bottom: 2rem;
+  min-height: 80vh;
 }
 
-body {
+.post-card .card-img-top {
+  display: block;
+  width: 100%;
+  height: 60vh;
+  object-fit: cover;
+}
+.card-title {
+  position: relative;
+  bottom: 1rem;
+  left: 1rem;
+  color: #f5f2f2;
+  text-shadow: 0 2px 4px rgba(242, 236, 236, 0.8);
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+/* SINGLE post-overlay definition */
+.post-overlay {
+  position: absolute;
+  inset: 0;
   display: flex;
   flex-direction: column;
-  justify-content: stretch;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 2rem;
+  color: #fff;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.7) 100%);
+  text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+  gap: 1rem;
+  z-index: 1000;
 }
-
-header,
-footer {
-  flex: 0 0 auto;
-}
-
-main {
-  text-align: center;
-  padding: 5vmin;
-  flex: 1 0 auto;
-}
-
-h1 {
-  text-align: center;
-}
-
-p {
-  color: grey;
-}
-
-.profile {
-  height: 200px;
-  width: 200px;
-  object-fit: cover;
-  border-radius: 50%;
-}
-form {
-  margin-top: 50px;
-}
-
-.feedback-input {
-  color: white;
-  font-weight: 500;
-  font-size: 18px;
-  border-radius: 5px;
-  line-height: 22px;
-  background-color: transparent;
-  border: 2px solid #3586ff;
-  transition: all 0.3s;
-  padding: 13px;
-  margin-bottom: 15px;
+.post-content-box {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  box-sizing: border-box;
-  outline: 0;
+  overflow: auto;
+}
+.post-content {
+  padding: 1rem;
+  background: rgba(255,255,255,0.1);
+  border-radius: 8px;
+  max-height: 70%;
+  font-size: 1.1rem;
+  line-height: 1.1rem;
+}
+/* Enable interaction for content inside overlay */
+.post-overlay .post-content-box,
+.post-overlay .editor-panel,
+.post-overlay .post-actions,
+.post-overlay a,
+.post-overlay button,
+.post-overlay input,
+.post-overlay textarea {
+  pointer-events: auto;
 }
 
-.feedback-input:focus {
-  border: 2px solid #3586ff;
+
+
+.scrollable-content {
+  max-height: 600px;
+  overflow-y: auto;
+  text-align: left;
 }
 
-textarea {
-  height: 150px;
-  line-height: 150%;
-  resize: vertical;
+.post-actions {
+  margin-top: 1rem;
 }
 
-[type="submit"] {
-  width: 100%;
-  background: #3586ff;
-  border-radius: 5px;
-  border: 0;
-  cursor: pointer;
-  color: white;
-  font-size: 24px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  transition: all 0.3s;
-  margin-top: -4px;
-  font-weight: 700;
+.post-actions a {
+  color: #fff;
+  text-decoration: underline;
+  margin: 0 0.5rem;
 }
-[type="submit"]:hover {
-  background: #3586ff;
+
+.post-actions a:hover {
+  color: #ccc;
+}
+
+/* Subject list styling */
+.subjects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.subject-card {
+  background: rgba(255,255,255,0.05);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.1);
+  text-align: center;
 }
