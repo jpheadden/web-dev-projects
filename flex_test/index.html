@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>"Fun Stuff"</title>
+    <style>
+        .trouble {
+            color: red;
+        }
+        .critters {
+            
+            display: flex;
+            flex-direction: row;
+            justify-content:space-between; 
+            /* width: 100px; */
+            flex-basis: 200px;
+            flex-grow: 1;
+            flex-shrink: 1;
+            
+            /* flex grow shrink basis */
+            
+          
+            /* flex: 1; */
+            
+        
+            
+            
+            
+        }
+        .card {
+            padding: 2%;
+            /* flex: 1 1 0; */
+            border: 4px, solid, salmon;
+            margin: 1%
+            
+        }
+        h2 {
+            font-size: 2rem;
+        }
+        .img {
+            padding: 5%;
+            float:left;
+            max-width: 100%;
+            min-width: 200px;
+        }
+        div p {
+            font-size: 20px;
+            color: rgb(7, 121, 121);
+            text-align: center;
+            
+        }
+
+        @media (max-width: 650px) {
+            .critters {
+                display: block;
+            }
+            .img {
+                /* object-fit: cover; */
+                min-width: 200px;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="critters">
+        
+        <div class="card One">
+            <h1>Trout slayer extraordinaire</h1>
+           
+            <img class="img 1"src="./assets/images/me in desert.jpg" height="200" alt="Trout Slayer"/>
+            <p>Me in the desert back when I was really cool (now I'm just cool).</p>
+        </div>
+        <div class="card Two">
+            <h2> I'm in <span class="trouble">trouble </span>now</h2>
+            
+           
+            </p>
+            <img class="img 2" src="./assets/images/deep trouble.jpeg" height="200" alt="Fox and the hound"/>
+            <p> "This ol' Fox found himself in a wee bit of a pickle, but he handled it real well.  He lived to tell the story. Lends creedence to the old adage, "When your in trouble, just say  nothing and act like it's the place to be."
+        </div>
+        <div class="card Three">
+            <h2> Nice sharky</h2>
+            
+
+            <img src="./assets/images/here sharky.jpg" height="200" alt="nice sharky"/>
+            <p> Diving in Cozumel off Santa Rosa Wall with my babies.</p>
+        </div>
+        <div class="card Four">
+            <h2>My biggest victim this year</h2>
+            
+            <img src="./assets/images/fishy.jpg" height="200" alt="fishy"/>
+            <p> Fortunately this young fella lived but I had him out of the water way too long.  Thanks for rockin' it with me fishy.</p>
+        </div>
+    </div>
+        
+<!--  
+    
+</html>

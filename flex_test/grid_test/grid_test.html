@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Pappy</title>
+        <style>
+            body {
+            background-color: blanchedalmond;
+           .fox {
+            display: grid;
+            /* 1 fractional ratio vs 2  */
+            /* grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr; */
+            gap: 15px;
+            
+            /*
+            or 
+            grid-template-rows: 100px 200px;
+            grid-template-columns: 400px 800px;
+            or
+           
+            grid-template: 100px 200px / 400px 800px;
+            or */
+            grid-template-rows: 200px auto;
+            grid-template-columns: 200px auto;
+           }
+           p {
+            background-color: aqua;
+            color:blue;
+            width: 200px;
+            align-items: calc();
+            
+            border: 15px solid rgb(173, 230, 181);
+            border-radius: 10%;
+           }
+        }
+        </style>
+    </head>
+
+    <body>
+        <h1>Fred the Fox</h1>
+            <div class="fox">
+                <p> "This ol' Fox"
+                    </p>
+                <p> "He was sly"
+                    </p>
+                <p> "He knew he could go all the way to Monrovia if he wanted to.  But he thought better of it and decided just to sit tight, wait it out, see what happens."
+                    </p>
+                <p> "And be wry"
+                    </p>
+                
+            </div>
+    
+    </body>
+</html>

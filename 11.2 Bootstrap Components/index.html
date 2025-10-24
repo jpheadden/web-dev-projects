@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<!-- dark mode data-bs-theme=dark -->
+<html lang="en"  data-bs-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bootstrap Components</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+  <style>
+    .feature-icon {
+      width: 4rem;
+      height: 4rem;
+      border-radius: .75rem;
+    }
+    
+  </style>
+</head>
+
+<body>
+  
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height=20" fill="currentColor" class="bi bi-airplane-engines" viewBox="0 0 16 16">
+        <path d="M8 0c-.787 0-1.292.592-1.572 1.151A4.35 4.35 0 0 0 6 3v3.691l-2 1V7.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.191l-1.17.585A1.5 1.5 0 0 0 0 10.618V12a.5.5 0 0 0 .582.493l1.631-.272.313.937a.5.5 0 0 0 .948 0l.405-1.214 2.21-.369.375 2.253-1.318 1.318A.5.5 0 0 0 5.5 16h5a.5.5 0 0 0 .354-.854l-1.318-1.318.375-2.253 2.21.369.405 1.214a.5.5 0 0 0 .948 0l.313-.937 1.63.272A.5.5 0 0 0 16 12v-1.382a1.5 1.5 0 0 0-.83-1.342L14 8.691V7.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v.191l-2-1V3c0-.568-.14-1.271-.428-1.849C9.292.591 8.787 0 8 0M7 3c0-.432.11-.979.322-1.401C7.542 1.159 7.787 1 8 1s.458.158.678.599C8.889 2.02 9 2.569 9 3v4a.5.5 0 0 0 .276.447l5.448 2.724a.5.5 0 0 1 .276.447v.792l-5.418-.903a.5.5 0 0 0-.575.41l-.5 3a.5.5 0 0 0 .14.437l.646.646H6.707l.647-.646a.5.5 0 0 0 .14-.436l-.5-3a.5.5 0 0 0-.576-.411L1 11.41v-.792a.5.5 0 0 1 .276-.447l5.448-2.724A.5.5 0 0 0 7 7z"/>
+      </svg> I like to move it
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Services
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Hound Dog</a></li>
+              <li><a class="dropdown-item" href="#">little cat</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">give some loot</a></li>
+            </ul>
+          </li>
+          
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="houndsRus" aria-label="Postcode">
+          <button class="btn btn-outline-success" type="submit">Kitty</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+  <div class="px-4 py-5 my-5 text-center">
+    <img class="d-block mx-auto mb-4" src="./dog.jpg" alt="" width="150" height=110">
+    <h1 class="display-5 fw-bold text-body-emphasis">Sweetest little dog on the Plan</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4">We admire sweet little dogs and cats.  Here we just have a dog (or groo as my brother and I have called them since we were knee high to a grasshopper (don't ask)). So whether you're a dog person or a Kidee (cat) person, this is the spot for you.</p>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+        <button type="button" class="btn btn-primary btn-lg px-4 gap-3">You love Groos</button>
+        <button type="button" class="btn btn-success btn-lg px-4">You love Kidees</button>
+      </div>
+    </div>
+  </div>
+  <div class="container px-4 py-5" id="featured-3">
+    <h2 class="pb-2 border-bottom">What kind of Critter are you after?</h2>
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+      <div class="feature col">
+        <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+          <img src="./briefcase.svg" alt="briefcase" width="32" height="32">
+        </div>
+        <h3 class="fs-2 text-body-emphasis">Kitty Perhaps?</h3>
+        <p>How would you like a sweet little cat to brighten up your Cheleiley?</p>
+        <a href="#" class="icon-link">
+          Get a Kitty
+          <img src="./chevron-right.svg" alt="chevron-right" width="16" height="16">
+        </a>
+      </div>
+      <div class="feature col">
+        <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+          <img src="./bus-front.svg" alt="bus-front" width="32" height="32">
+        </div>
+        <h3 class="fs-2 text-body-emphasis">Hound Dog</h3>
+        <p>Are you looking for a new hound dog.</p>
+        <a href="#" class="icon-link">
+          Little Groo
+          <img src="./chevron-right.svg" alt="chevron-right" width="16" height="16">
+        </a>
+      </div>
+      <div class="feature col">
+        <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+          <img src="./chat-square-heart.svg" alt="calendar" width="32" height="32">
+        </div>
+        <h3 class="fs-2 text-body-emphasis">Some other Critter?</h3>
+        <p>We have all kinds of critters who need a home, rover mountain kitties, rover danger Groo, Grable the grizzly bear.</p>
+        <a href="#" class="icon-link">
+          How about a minx?
+          <img src="./chevron-right.svg" alt="chevron-right" width="16" height="16">
+        </a>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <div class="container">
+      <!-- <div class="container"> limits the size
+     -->
+    <div id="carouselExample" class="carousel slide">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="./odiferous.jpg" class="d-block w-100" alt="odie" >
+        </div>
+        <div class="carousel-item">
+          <img src="./kitty.jpg" class="d-block w-100" alt="Cat">
+        </div>
+        <div class="carousel-item">
+          <img src="./griz.jpg" class="d-block w-100" alt="griz">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+</div>
+<footer class="py-3 my-4">
+  <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+    <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
+    <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Hounds</a></li>
+    <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Kidees</a></li>
+    <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Critters</a></li>
+    <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">DogsRUs</a></li>
+  </ul>
+  <p class="text-center text-body-secondary">© 2024 Odiferous Aloicious, Inc</p>
+</footer>
+</body>
+
+</html>

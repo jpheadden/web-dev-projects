@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Name Letters</title>
+</head>
+
+<body>
+  <!-- Write your code here -->
+   <% if (fullName) {%>
+      <h1>Here's yer name: <%= fullName %> </h1>
+      <h2>And it has <%= fullName.length %> letters! 😁</h2>
+   
+    <%} else {%>
+      <h1>Type yer First & Last name here ogr81: 😁 </h1>
+    
+      <form action="/submit" method="POST">
+        <input type="text" name="fName" placeholder="First name">
+        <input type="text" name="lName" placeholder="Last name">
+        <input type="submit" value="OK">
+      </form>
+    <% } %>
+</body>
+ 
+</html>

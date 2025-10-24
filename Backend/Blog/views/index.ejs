@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog of great literary efforts</title>
+</head>
+<html>
+<body>
+  <h1>
+    <!-- Tite goes here -->
+    <%= "Blog of all things seen and unseen" %>
+  </h1>
+  
+<!-- Header goes here ogr81
+     <%- include("partials/header.ejs") %>
+-->
+        <p>
+          <!-- HTML content goes here -->
+           <!-- Form to ask to topic, post, name.-->
+              <form action="/submit" method="POST">
+                <label for="Topic">Topic:</label>
+                <input type="text" name="Topic" required>
+                <label for="Article">Article</label>
+                <input type="text" name="article" required>
+                <input type="submit" value="Save">
+          <%= "Place holder for comment" %>
+         <form action="/post" 
+        </p>
+
+        <!-- Footer goes here -->
+        <%- include("partials/footer.ejs") %>
+</body>
+
+</html>
