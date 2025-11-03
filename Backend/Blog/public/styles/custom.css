@@ -17,27 +17,9 @@ h1, h2, h3, h4, h5, h6 {
   color: #222 ;
 }
 
-/* ✅ Navigation: lighter touch and keep your layout's color scheme */
-.navbar {
-  background-color: #ffffff ;
-  color: #333 ;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
 
-.navbar a.nav-link {
-  color: #333 ;
-}
 
-.navbar a.nav-link:hover {
-  color: #007bff ; /* subtle Bootstrap blue */
-}
 
-/* ✅ Buttons: softer style (Grayscale uses bold uppercase) */
-.btn {
-  text-transform: none ;
-  font-weight: 500 ;
-  border-radius: 0.375rem ; /* standard Bootstrap radius */
-}
 
 /* ✅ Section backgrounds: soften Grayscale’s contrast */
 .bg-black, .bg-dark {

@@ -1,44 +1,15 @@
 <footer>
 
-  <!-- Bootstrap Bundle -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-
-<!-- Grayscale Script -->
-<script src="/js/scripts.js"></script>
+ 
 
   <p class="copyright"> Made with care high up in the Rockies, a place that I love.</p>
 
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-<script>
-  const toggleBtn = document.getElementById('theme-toggle');
-  const body = document.body;
-
-  // Restore previous theme
-  const saved = localStorage.getItem('theme');
-  if (saved === 'dark') {
-    body.classList.add('dark-mode');
-    toggleBtn.innerHTML = '<i class="fas fa-sun"></i> Light';
-  }
-
-  toggleBtn.addEventListener('click', () => {
-    // Fade transition
-    body.classList.add('theme-fade');
-    body.offsetHeight; // force reflow so transition triggers
-    body.classList.add('theme-fade-active');
-
-    const dark = body.classList.toggle('dark-mode');
-    localStorage.setItem('theme', dark ? 'dark' : 'light');
-    toggleBtn.innerHTML = dark
-      ? '<i class="fas fa-sun"></i> Light'
-      : '<i class="fas fa-moon"></i> Dark';
-
-    // remove fade classes after transition completes
-    setTimeout(() => {
-      body.classList.remove('theme-fade', 'theme-fade-active');
-    }, 400);
-  });
-</script>
-
+ <!-- Bootstrap Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Theme Toggle Script -->
+<script src="/Blog/public/js/theme-toggle.js"></script>
+  
 </footer>
 

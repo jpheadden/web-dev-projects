@@ -1,31 +1,39 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<%- include("partials/head.ejs") %>
-<title><%= post.title %></title>
-</head>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%- include("partials/head.ejs") %>
+    <link rel="stylesheet" href="/css/post.css">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    
+    <title><%= post.title %></title>
+  </head>
   <body>
-    <main class="container">
-   
-    <div class="card-body post-card">
-       <img src="/images/bg-masthead.jpg" class="card-img-top" alt="...">
-      
-      <div class="post-overlay">
-        <h1 class="post-content-box card-title"><%= post.subject %></h1>
-        <h3 class="post-content-box card-title"><%= post.title %></h3>
-          <div class="post-content-box">
-            <p class="post-content"><%= post.content %></p>
-          </div>
+    <%- include("partials/header.ejs") %>
+      <main class="container">
+    
+      <div class="card-body post-card">
+        <img src="/images/bg-masthead.jpg" class="card-img-top" alt="...">
+        
+        <div class="post-overlay">
+          <h1 class="post-content-box card-title"><%= post.subject %></h1>
+          <h3 class="post-content-box card-title"><%= post.title %></h3>
+            <div class="post-content-box">
+              <p class="post-content"><%= post.content %></p>
+            </div>
 
-          <a class="btn btn-primary" href="/edit/<%= post.id %>">Edit this Post</a>
+            <a class="btn btn-primary" href="/edit/<%= post.id %>">Edit this Post</a>
 
-          <a class="btn btn-secondary" href="/">Back Home Again</a>
+            <a class="btn btn-secondary" href="/">Back Home Again</a>
 
+        </div>
+        
       </div>
-      
-    </div>
-    </main>
-  </body
+      </main>
+    <%- include("partials/footer.ejs") %>
+    <!-- Before closing </body> tag -->
+    <script src="/js/theme-toggle.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
 </html>

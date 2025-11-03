@@ -1,14 +1,14 @@
 <!-- Edit Post with ID <%= post.id %> with confirmation -->
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <%- include("partials/head.ejs") %>
-   
-    <title>Edit Post - <%= post.title %></title>
-
-  </head>
+ <!-- In index.ejs, about.ejs, etc. -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit post</title>
+  
+  <%- include("partials/head.ejs") %>
+</head>
   
   <body>
     <%- include("partials/header.ejs") %>
@@ -45,5 +45,8 @@
     </main>
 
     <%- include("partials/footer.ejs") %>
+    <!-- Before closing </body> tag -->
+    <script src="/js/theme-toggle.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
