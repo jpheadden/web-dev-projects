@@ -1,52 +1,61 @@
-<!-- Edit Post with ID <%= post.id %> with confirmation -->
 <!DOCTYPE html>
 <html lang="en">
- <!-- In index.ejs, about.ejs, etc. -->
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit post</title>
-    
-    <%- include("partials/head.ejs") %>
-  </head>
-  
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Post - <%= post.title %></title>
+  <%- include("partials/head.ejs") %>
+</head>
 <body>
-    <%- include("partials/header.ejs") %>
+  <%- include("partials/header.ejs") %>
 
   <main class="container">
-      <div class="card-body post-card">
-        <img src="/images/demo-image-02.jpg" class="card-img-top" alt="...">
-     
-        <h1>Edit Post - <%= post.title %></h1>
-        <div class="editor-container post-overlay">
-            <form  class="editor-panel rounded" action="/edit/<%= post.id %>" method="POST">
-              <div class="editor-field">
-                  <label for="subject">Subject Matter</label>
-                  <input id="subject" name="subject" type="text" value="<%= post.subject %>">
-               
-                </div>
-                
-                <div class="editor-field">
-                  <label for="title">Title</label>
-                  <input id="title" name="title" type="text" required value="<%= post.title %>">
-                </div>
-                
-                <div class="editor-field">
-                  <label for="content">Content:</label>
-                  <textarea id="content" name="content" required><%= post.content %></textarea>
-                </div>
-                
-                <div class="editor-actions">
-                <button class="btn-primary rounded" type="submit">Update Post</button>
-                <button class="btn-secondary rounded" href="/post/<%= post.id %>">Cancel changes</a>
-              </form>
+    <div class="post-card">
+      <img src="/images/demo-image-02.jpg" class="card-img-top" alt="Post background">
+      
+      <div class="post-overlay">
+        <div class="post-content-box">
+          <h1>Edit Post - <%= post.title %></h1>
         </div>
-      </div>
-    </main>
 
-    <%- include("partials/footer.ejs") %>
-    <!-- Before closing </body> tag -->
-    <script src="/js/theme-toggle.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <form class="editor-panel" action="/edit/<%= post.id %>" method="POST">
+          <div class="editor-field">
+            <label for="subject">Subject Matter</label>
+            <input id="subject" name="subject" type="text" value="<%= post.subject || '' %>">
+          </div>
+          
+          <div class="editor-field">
+            <label for="title">Title</label>
+            <input id="title" name="title" type="text" required value="<%= post.title %>">
+          </div>
+          
+          <div class="editor-field">
+            <label for="content">Content</label>
+            <textarea id="content" name="content" rows="8" required><%= post.content %></textarea>
+          </div>
+          
+          <div class="editor-actions">
+            <!-- Update post and create a Modified date to be written to posts.json-->
+             <button type="submit" class="btn btn-primary">Update Post
+              
+            <!-- Cancel editing and return to post view -->
+              <a href="/post/<%= post.id %>" class="btn btn-secondary">Cancel</a>
+          </div>
+
+        </form>
+        <form action="/delete/<%= post.id %>" method="POST" style="margin-top: 1rem; text-align: center;" 
+              onsubmit="return confirm('Are you sure you want to delete this Entry?');">
+          <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Delete Post</button>
+        </form>
+
+        
+      </div>
+    </div>
+  </main>
+
+  <%- include("partials/footer.ejs") %>
+  
+  <script src="/js/theme-toggle.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

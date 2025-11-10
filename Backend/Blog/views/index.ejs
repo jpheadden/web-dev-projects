@@ -24,6 +24,7 @@
       <table class="table table-striped">
         <thead>
           <tr>
+            <th scope="col">Subject Matter</th>
             <th scope="col">Title</th>
             <th scope="col">Created At</th>
             <th scope="col">Actions</th>
@@ -32,6 +33,7 @@
         <tbody>
           <% posts.forEach(post => { %>
             <tr> 
+              <td><%= post.subject %></td>
               <td><a href="/post/<%= post.id %>"><%= post.title %></a></td>
               <td>
                 <% try { %>

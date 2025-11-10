@@ -46,7 +46,7 @@ function loadPosts() { //try and read posts if they exist
         //parse data into the variable posts and write to console
         const posts = JSON.parse(data);
         return posts; //return the posts array
-        console.log(JSON.stringify(posts, null, 2));
+       
            } else {
               console.log("No Posts returned.");
               return []; //return an empty array if no posts
@@ -98,7 +98,7 @@ function createPostId(posts) {
     console.log("New post ID generated:", newId);
     return newId;
     // Example output: "09252023001" for the first post on September 25, 2023
-    console.log("New post ID:", newId);
+    
 }
  
 
@@ -141,6 +141,7 @@ app.post("/new", (req, res) => {
   const posts = loadPosts(); //read existing posts
   const newPost = {
     id: createPostId(posts), //create a unique ID for the new post
+    subject: req.body.subject,
     title: req.body.title,
     content: req.body.content,
     createdAt:  new Date()
@@ -177,25 +178,22 @@ app.get("/edit/:id", (req, res) => {
     res.status(404).send("Post not found");
   }
 });
+// Handle the form submission for editing a post: 
+app.post('/edit/:id', (req, res) => {
+  const posts = loadPosts(); 
+  const postIndex = posts.findIndex(p => p.id === req.params.id);
+  if (postIndex !== -1) {
+    posts[postIndex] = {
+    ...posts[postIndex], // ← Copies ALL existing properties from the original post
+    title: req.body.title,        // ← Overwrites title with new value
+    content: req.body.content,    // ← Overwrites content with new value
+    subject: req.body.subject,    // ← Overwrites subject with new value
+    updatedAt: new Date().toISOString() // ← Adds new updatedAt field
+    };
 
-app.post("/edit/:id", (req, res) => {
-  const posts = loadPosts();
-  const idx = posts.findIndex(p => p.id === req.params.id);
-  if (idx === -1) {
-    console.log(`Post not found: ${req.params.id}`);
-    return res.status(404).send("Post not found");
+    savePosts(posts); // Save updated posts to file
   }
-
-  // update only editable fields, preserve id and createdAt
-  posts[idx].title = (req.body.title || "").trim();
-  posts[idx].content = (req.body.content || "").trim();
-  if (typeof req.body.subject !== "undefined") {
-    posts[idx].subject = (req.body.subject || "").trim();
-  }
-
-  savePosts(posts);
-  console.log(`Updated post ${req.params.id}`);
-  res.redirect(`/post/${req.params.id}`);
+  res.redirect(`/post/${req.params.id}`); // Redirect to the updated post view
 });
 
   

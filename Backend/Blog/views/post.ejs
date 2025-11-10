@@ -17,10 +17,32 @@
         <img src="/images/bg-masthead.jpg" class="card-img-top" alt="...">
         
         <div class="post-overlay">
-          <h1 class="post-content-box card-title"><%= post.subject %></h1>
-          <h3 class="post-content-box card-title"><%= post.title %></h3>
+          <h2 class="post-content-box card-title"><%= post.subject %></h2>
+          <h2 class="post-content-box card-title"><%= post.title %></h2>
             <div class="post-content-box">
               <p class="post-content"><%= post.content %></p>
+            </div>
+            <!--show created date:-->
+            <div class="post-content-box">
+                <% try { %>
+                  <%= new Date(post.createdAt).toLocaleString('en-US', {
+                  month: 'short', day: 'numeric', year: 'numeric',
+                  hour: '2-digit', minute: '2-digit', hour12: false
+                  }); %>
+                <% } catch (error) { %>
+                  <span class="text-muted">Invalid date</span>
+                <% } %>
+            </div>
+            <!-- show modified date:-->
+            <div class="post-content-box">
+                <% try { %>
+                  <%= new Date(post.updatedAt).toLocaleString('en-US', {
+                  month: 'short', day: 'numeric', year: 'numeric',
+                  hour: '2-digit', minute: '2-digit', hour12: false
+                  }); %>
+                <% } catch (error) { %>
+                  <span class="text-muted">Not modified</span>
+                <% } %>
             </div>
 
             <a class="btn btn-primary" href="/edit/<%= post.id %>">Edit this Post</a>

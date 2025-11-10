@@ -52,12 +52,7 @@ footer {
   background: rgba(255,255,255,0.15);
   color: #fff !important;
 }
-/* ✅ Navigation: lighter touch and keep your layout's color scheme */
-.navbar {
-  background-color: #ffffff ;
-  color: #333 ;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
+
 
 .navbar a.nav-link {
   color: #333 ;

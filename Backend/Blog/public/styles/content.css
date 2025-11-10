@@ -39,7 +39,11 @@
   text-shadow: 0 2px 4px rgba(0,0,0,0.8);
   gap: 1rem;
   z-index: 1000;
+  /* Remove any height restrictions */
+  min-height: 100%;
+  overflow-y: auto; /* Allow scrolling if needed */
 }
+
 .post-content-box {
   flex: 1;
   display: flex;
