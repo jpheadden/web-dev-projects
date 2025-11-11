@@ -3,52 +3,106 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Edit Post - <%= post.title %></title>
   <%- include("partials/head.ejs") %>
+  <link rel="stylesheet" href="/css/post.css">
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+  <title>Edit Post - <%= post.title %></title>
 </head>
 <body>
   <%- include("partials/header.ejs") %>
 
   <main class="container">
     <div class="post-card">
-      <img src="/images/demo-image-02.jpg" class="card-img-top" alt="Post background">
+      <img src="/images/bg-masthead.jpg" class="card-img-top" alt="Post background">
       
       <div class="post-overlay">
-        <div class="post-content-box">
-          <h1>Edit Post - <%= post.title %></h1>
+        <!-- Edit Header -->
+        <div class="post-header">
+          <span class="post-subject">Editing: <%= post.subject %></span>
+          <h1 class="post-title">Edit Post</h1>
         </div>
 
-        <form class="editor-panel" action="/edit/<%= post.id %>" method="POST">
-          <div class="editor-field">
-            <label for="subject">Subject Matter</label>
-            <input id="subject" name="subject" type="text" value="<%= post.subject || '' %>">
-          </div>
-          
-          <div class="editor-field">
-            <label for="title">Title</label>
-            <input id="title" name="title" type="text" required value="<%= post.title %>">
-          </div>
-          
-          <div class="editor-field">
-            <label for="content">Content</label>
-            <textarea id="content" name="content" rows="8" required><%= post.content %></textarea>
-          </div>
-          
-          <div class="editor-actions">
-            <!-- Update post and create a Modified date to be written to posts.json-->
-             <button type="submit" class="btn btn-primary">Update Post
-              
-            <!-- Cancel editing and return to post view -->
-              <a href="/post/<%= post.id %>" class="btn btn-secondary">Cancel</a>
-          </div>
+        <!-- Edit Form Section -->
+        <div class="post-content-section .editor-panel">
+          <form class="editor-panel" action="/edit/<%= post.id %>" method="POST">
+            <div class="editor-field">
+              <label for="subject">Subject Matter</label>
+              <input id="subject" name="subject" type="text" value="<%= post.subject || '' %>">
+            </div>
+            
+            <div class="editor-field">
+              <label for="title">Title</label>
+              <input id="title" name="title" type="text" required value="<%= post.title %>">
+            </div>
+            
+            <div class="editor-field">
+              <label for="content">Content</label>
+              <textarea id="content" name="content" rows="8" required><%= post.content %></textarea>
+            </div>
+            
+            <div class="editor-actions">
+              <button type="submit" class="btn btn-primary">
+                <i class="fas fa-save"></i> Update Post
+              </button>
+              <a href="/post/<%= post.id %>" class="btn btn-secondary">
+                <i class="fas fa-times"></i> Cancel
+              </a>
+            </div>
+          </form>
+        </div>
 
-        </form>
-        <form action="/delete/<%= post.id %>" method="POST" style="margin-top: 1rem; text-align: center;" 
-              onsubmit="return confirm('Are you sure you want to delete this Entry?');">
-          <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Delete Post</button>
-        </form>
+        <!-- Post Metadata Section -->
+        <div class="post-meta-section">
+          <div class="meta-row">
+            <div class="meta-item">
+              <i class="fas fa-calendar-plus"></i>
+              <span class="meta-label">Created:</span>
+              <span class="meta-value">
+                <% try { %>
+                  <%= new Date(post.createdAt).toLocaleString('en-US', {
+                    month: 'short', day: 'numeric', year: 'numeric',
+                    hour: '2-digit', minute: '2-digit', hour12: false
+                  }); %>
+                <% } catch (error) { %>
+                  <span class="text-muted">Invalid date</span>
+                <% } %>
+              </span>
+            </div>
 
-        
+            <% if (post.updatedAt && post.updatedAt !== post.createdAt) { %>
+            <div class="meta-item">
+              <i class="fas fa-edit"></i>
+              <span class="meta-label">Last Modified:</span>
+              <span class="meta-value">
+                <% try { %>
+                  <%= new Date(post.updatedAt).toLocaleString('en-US', {
+                    month: 'short', day: 'numeric', year: 'numeric',
+                    hour: '2-digit', minute: '2-digit', hour12: false
+                  }); %>
+                <% } catch (error) { %>
+                  <span class="text-muted">Invalid date</span>
+                <% } %>
+              </span>
+            </div>
+            <% } %>
+
+            <div class="meta-item">
+              <i class="fas fa-hashtag"></i>
+              <span class="meta-label">Post ID:</span>
+              <span class="meta-value"><%= post.id %></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Delete Post Section -->
+        <div class="post-card">          
+          <form action="/delete/<%= post.id %>" method="POST" 
+                onsubmit="return confirm('Are you sure you want to delete this post? This action cannot be undone.');">
+            <button type="submit" class="btn btn-danger">
+              <i class="fas fa-trash"></i> Delete Post
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   </main>

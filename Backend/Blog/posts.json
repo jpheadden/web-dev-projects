@@ -4,7 +4,8 @@
     "title": "What is Lorem Ipsum?",
     "content": "Lorem Ipsum is  simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\r\n  Lord Farquar wrote this.",
     "createdAt": "2025-10-10T23:13:42.295Z",
-    "subject": "Programming"
+    "subject": "Programming",
+    "updatedAt": "2025-11-11T02:08:12.878Z"
   },
   {
     "id": "10132025001",
@@ -42,5 +43,12 @@
     "content": "This is a double (binary) star about 36o ly away.  One star is white and one is blue.  The blue  star is hotter than the white one.  It's at the tail of the northern Cross, which is in the constellation we shall call Cygnus. Cygnus is in the summer triangle, which is comprise of Deneb, Vega, and Altair stars.  Vega is at the end of the Lyra constellation which has the Ring nebula in it.  A really cool area.  ",
     "createdAt": "2025-11-08T18:29:08.941Z",
     "subject": "Astronomy"
+  },
+  {
+    "id": "11102025001",
+    "subject": "Chemistry",
+    "title": "Stoichiometry",
+    "content": "Stoichiometry is the quantitative study of chemical reactions, used to calculate the amounts of reactants and products involved. It uses relationships from balanced chemical equations to determine unknown quantities, such as how much product can be made from a certain amount of reactant. The process relies on the principle of the law of conservation of mass, which states that matter is neither created nor destroyed in a chemical reaction",
+    "createdAt": "2025-11-11T02:07:28.281Z"
   }
 ]

@@ -21,12 +21,12 @@
 
     <% if (Array.isArray(posts) && posts.length > 0) { %>  
       <p><%= "These are your posts:" %></p>
-      <table class="table table-striped">
+      <table class="table">
         <thead>
           <tr>
             <th scope="col">Subject Matter</th>
             <th scope="col">Title</th>
-            <th scope="col">Created At</th>
+            <th scope="col">Created On</th>
             <th scope="col">Actions</th>
           </tr>
         </thead>
@@ -39,7 +39,7 @@
                 <% try { %>
                   <%= new Date(post.createdAt).toLocaleString('en-US', {
                   month: 'short', day: 'numeric', year: 'numeric',
-                  hour: '2-digit', minute: '2-digit', hour12: false
+                  //hour: '2-digit', minute: '2-digit', hour12: false
                   }); %>
                 <% } catch (error) { %>
                   <span class="text-muted">Invalid date</span>
