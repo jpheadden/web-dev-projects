@@ -6,4 +6,4 @@ console.log(`El Nombre es ${sillyName}.`);  //note:  backtick as opposed to a si
 
 import superheroes, { randomSuperhero } from 'superheroes'
 var ultraCool = randomSuperhero();
-console.log(`My Superhero is ${ultraCool}.`);
+console.log(`I am ${ultraCool}.`);

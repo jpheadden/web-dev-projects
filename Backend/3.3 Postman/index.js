@@ -1,4 +1,5 @@
 import express from "express";
+import morgan from "morgan";
 const app = express();
 const port = 3000;
 
@@ -8,7 +9,8 @@ const port = 3000;
 // Check that for each route you’re getting the correct status code returned to you from your server.
 // You should not get any 404s or 500 status codes.
 // *********************
-
+//adding middlewares:
+app.use(morgan("dev"));
 app.get("/", (req, res) => {
   res.send("<h1>Home Page</h1>");
 });

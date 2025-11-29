@@ -7,29 +7,70 @@
 </head>
 
 <body>
-  <h1>Taco Town 🌮</h1>
+  <h1>el Tacero 🌮</h1>
 
-  <form action="/recipe" method="POST" class="buttons">
-    <button type="submit" value="chicken" name="choice">🍗</button>
+  <form action="/recipe" method="POST" class="buttons"> <!-- Step 4: Update the form to send the correct values -->
+    <button type="submit" value="chicken" name="choice">🍗</button>  <!--key is choice and value is chicken-->>
     <button type="submit" value="beef" name="choice">🥩</button>
     <button type="submit" value="fish" name="choice">🐟</button>
   </form>
-  <div id="recipeContainer" class="hidden">
+  <div id="recipeContainer" class = "scroll">
 
     <!-- If no recipe yet, show: -->
-    <h2>Pick your favourite taco ingredient 👆</h2>
-    <!-- Else, show the recipe name e.g. <h2>Recipe name</h2>-->
-
-    <h3>Ingredients:</h3>
-    <ul id="ingredientsList">
-      <li>Protein name, protein preparation</li>
-      <li>Salsa name</li>
-      <li>Every other topping</li>
-    </ul>
-
-
-
-  </div>
+      <% if (!data || Object.keys(data).length === 0) { %>
+    <h2>Pick your favourite tacos Gringo 🌮</h2>
+      <% } else { %>
+      <!-- Else, show the recipe name e.g. <h2>Recipe name</h2> and Ingredients -->
+        <h2><%= data.name %></h2>
+        <h3>Ingredients:</h3>
+      <!--
+        <ul>
+        <% Object.entries(data.ingredients).forEach(([key, ingredient]) => { %>
+          <li><strong><%= key %>:</strong> <%= ingredient.name %></li>
+        <% }); %>
+        </ul>
+      -->
+   
+      <!-- Step 5: Display the recipe details if available -->
+          <% if (data && data.name) { %>
+          <div class="recipe-details">
+           
+            <p class="price">Price: $<%= data.price %></p>
+            
+            <div class="ingredients">
+              <!-- Protein -->
+              <div class="ingredient-section">
+                <h4>🥩 Protein:</h4>
+                <p><%= data.ingredients.protein.name %> (<%= data.ingredients.protein.preparation %>)</p>
+              </div>
+              
+              <!-- Salsa -->
+              <div class="ingredient-section">
+                <h4>🌶️ Salsa:</h4>
+                <p><%= data.ingredients.salsa.name %> - <em><%= data.ingredients.salsa.spiciness %></em></p>
+              </div>
+              
+              <!-- Toppings -->
+              <div class="ingredient-section">
+                <h4>🥬 Toppings:</h4>
+                <% data.ingredients.toppings.forEach((topping) => { %>
+                  <div class="topping">
+                    <h5><%= topping.name %> (<%= topping.quantity %>)</h5>
+                    <ul class="ingredient-list">
+                      <% topping.ingredients.forEach((ingredient) => { %>
+                        <li><%= ingredient %></li>
+                      <% }); %>
+                    </ul>
+                  </div>
+                <% }); %>
+              </div>
+            </div>
+          </div>
+        <% } else { %>
+          <h2>Pick your favourite taco el Guapo👆</h2>
+        <% } %>
+          <% }; %>
+  </div>         
 </body>
 
 </html>

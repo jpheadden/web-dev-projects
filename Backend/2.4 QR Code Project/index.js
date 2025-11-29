@@ -9,15 +9,15 @@ import qr from "qr-image";
 import fs from "fs";
 import { error } from "console";
 
-inquirer
-    .prompt([
+inquirer  
+    .prompt([ //prompt the user for input
         {
             type: 'input',
             name: 'url',
             message: "What url would you like to go to el Guapo?"
         },
     ])
-    .then((answers) => {
+    .then((answers) => { //answers is an object that contains the user input
         console.log(answers);
         //2. Use the qr-image npm package to turn the user entered URL into a QR code image.
         const url = answers.url; //url is a variable with the url entered in by the user
