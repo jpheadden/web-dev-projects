@@ -37,23 +37,27 @@
       <article class="card-item">
         <h2 class="card-activity">
           <!-- Show Activity -->
+         <%= data ? data.activity : 'Click Go to find an activity!' %>
         </h2>
         <div class="card-info">
           <span class="card-type">
             <!-- Show Activity type -->
+           <%= data ? data.type : 'Type of activity' %>
           </span>
           <span class="card-participants">
             <!-- participants: Show participant number -->
-            <span class="card-number"></span>
+            <%= data ? data.participants : 'No. of people' %>
           </span>
         </div>
       </article>
 
 
       <div id="tag-error" class="tag-error">
-        <!-- Show any errors that were sent from the backend -->
+        <!-- Only show error if it exists -->
+        <% if (typeof error !== 'undefined' && error) { %>
+          <%= error || ''  %>
+        <% } %>
       </div>
-
     </section>
   </div>
 
