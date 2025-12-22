@@ -33,7 +33,7 @@ app.post("/", async (req, res) => {
     const result = response.data;
     console.log(result);
     res.render("solution.ejs", {
-      data: result[Math.floor(Math.random() * result.length)],
+      data: result[Math.floor(Math.random() * result.length)], // Select a random activity from the filtered results, so much easier than the way I did it.
     });
   } catch (error) {
     console.error("Failed to make request:", error.message);
