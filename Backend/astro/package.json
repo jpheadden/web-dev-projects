@@ -1,0 +1,21 @@
+{
+  "name": "astro",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Paul Headden",
+  "license": "ISC",
+  "description": "View of Astromonical objects",
+  "dependencies": {
+    "@dotenvx/dotenvx": "^1.51.2",
+    "axios": "^1.13.2",
+    "body-parser": "^2.2.1",
+    "dotenv": "^17.2.3",
+    "ejs": "^3.1.10",
+    "express": "^5.2.1"
+  }
+}
