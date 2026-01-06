@@ -11,9 +11,9 @@ const API_Key = process.env.RAPIDAPI_KEY;
 const app = express();
 //const port = 3000;
 // 3. Use the public folder for static files.
-app.use(express.static("public"));
+app.use(express.static("public")); 
 app.use(express.urlencoded({ extended: true }));
-app.use(morgan("combined")); // Logging middleware 
+app.use(morgan("common")); // Logging middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -31,6 +31,7 @@ const PORT = process.env.PORT || 3000;
 const host = process.env.ASTROAPI_Host;
 const applicationID = process.env.ASTROAPI_Username;
 const applicationSecret = process.env.ASTROAPI_Secret;
+
 //const authString = Buffer.toString(`applicationId:applicationSecret`, "base64");
 //console.log("AuthString: " + authString);
 // Start the server
@@ -40,9 +41,18 @@ app.listen(PORT, () => {
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
+//Render the home page and clear previous data:
+ 
 app.get("/", (req, res) => {
-  res.render("index.ejs", { data: "Enter the celestial body name: " })
+  res.render("index.ejs", { 
+    objects: null,
+    searchTerm: null,
+    totalResults: 0,
+    error: null
+  })
 });
+
+//Submit users Obect Name and search type to the Astronomy API and present the results to the user.
 app.post("/astro-submit", async (req, res) => { 
   const url = host + "/search";
   console.log("URL: ", url);
@@ -52,16 +62,14 @@ app.post("/astro-submit", async (req, res) => {
   console.log("- Host:", host);
   console.log("term:", req.body.term);
   console.log("match_type:", req.body.match_type);
-
-  
       try {
           const response = await axios.get(url, {
            auth:  {
             username: applicationID.trim(),
             password: applicationSecret.trim()
            }, params: {
-            term: req.body.term,
-            match_type: req.body.match_type
+              term: req.body.term,
+              match_type: req.body.match_type
            }
           }); // Make API request 
           
@@ -74,18 +82,19 @@ app.post("/astro-submit", async (req, res) => {
 
 
           // Loop through apiResponse and write the name and type.name of each object to an array called objectsArray:
-            const objectsArray = [];
-            if (apiResponse && apiResponse.data && Array.isArray(apiResponse.data)) {
+          const objectsArray = createObjectsArray(apiResponse);
+          console.log("objectsArray:  " + JSON.stringify(objectsArray, null, 2));  
           res.render("index.ejs", { 
-            data: apiResponse, // Pass the API response to the EJS template as data to be passed to the EJS template:
-
-            error: null // No error initially
+            objects: objectsArray, 
+            searchTerm: req.body.term,
+            totalResults: objectsArray.length,
+            error: null
           }); // Render index.ejs with the data
-             
+              
     
           
         } catch (error) {
-               console.error("Failed to make request:", error.message);
+               console.error("Failed to make request:", error.message);1
                console.error("Error details:", {
                  status: error.response?.status,
                  statusText: error.response?.statusText,
@@ -110,17 +119,40 @@ app.post("/astro-submit", async (req, res) => {
               }
           console.log(errorMessage);
           res.render("index.ejs", { 
-            data: null, 
+            objects: null, 
             error: errorMessage
           });
         }
 });
- function createObjectsArray(apiResponse)   {
-  const objectsArray = [];
+
+/*The function createObjectsArray takes the apiResponse, if it exists and has data, 
+iterates over it and parses out the name and id.name and puts this in objectsArray to be sent to index.ejs and presented
+to the user.
+*/
+function createObjectsArray(apiResponse) {
   
-    if (apiResponse && apiResponse.data && Array.isArray(apiResponse.data)) {
-      array.forEach(element => {
+  const objectsArray = [];  // objectsArray stores data to be rendered in index.ejs, 
+  // Also reinitialize objects array to null.
+  if (apiResponse && apiResponse.data && Array.isArray(apiResponse.data)) {
+    apiResponse.data.forEach(element => {  //interate over each element in apiResponse.data and execute a callback function
+      //once for each element.
+      const obj = {
+        name: element.name,
+        Type: element.type?.name, // Using optional chaining in case id doesn't exist
+        Sub_Type: element.subType.name,
+        Catalog_Name: element.crossIdentification,
+        Right_Ascension:  element.position.equatorial.rightAscension.string,
+        Declination:  element.position.equatorial.declination.string,
+        InConstellation: element.position.constellation.name,
         
-      });
-    }
-        
+      };
+      objectsArray.push(obj); //push each obj(ect) found into the objectsArray as the next element
+      
+    });
+  } else {
+    console.log("No data found in API response to create objectsArray.");
+
+  }
+  
+  return objectsArray;
+} 

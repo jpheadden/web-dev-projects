@@ -1,76 +1,76 @@
 <!DOCTYPE html>
 <head>
     <title>Astronomical Objects</title>
-    <style>
-        /* CSS styles */
-        body {
-        font-family: Arial, sans-serif;
-        background-color: #f5f5f5;
-        margin: 0;
-        padding: 0;
-        }
+    <link rel="stylesheet" href="/styles/layout.css">
+    <link rel="stylesheet" href="/styles/content.css">
     
-        .container {
-        max-width: 600px;
-        margin: 50px auto;
-        background-color: #fff;
-        padding: 20px;
-        border-radius: 5px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-    
-        h1 {
-        text-align: center;
-        }
-    
-        form {
-        margin-top: 20px;
-        }
-    
-        label {
-        display: block;
-        margin-bottom: 5px;
-        font-weight: bold;
-        }
-    
-        input[type="text"],
-        input[type="number"] {
-        width: 100%;
-        padding: 8px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-        margin-bottom: 10px;
-        }
-    
-        input[type="submit"] {
-        color: #fff;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 16px;
-        }
-    </style>
 </head>
 <html>
-    <p>
-        <%= data %>
-    </p>
+<body class="body">    
 <p>
+    <h1>Celestial Bodies </h1>
+    <% if (locals.searchTerm) { %>
+     <h1> Enter another Object's name here: </h1>
+    <% }  else { %>
+     <h1>  Enter a Celestial Object's name here: </h1>
+    <% } %>
+    
     <div class="container">
-        <h1>Celestial Body</h1>
+        
         <form method="POST" action="/astro-submit">
-            <label for="term">term:</label>
+            <label for="term">Name:</label>
             <input type="text" id="term" name="term" required>
             
-            <label for="match_type">match_type:</label>
+            <label for="match_type">Search fuzzy or exact?</label>
             <select id="match_type" name="match_type">
                 <option value="fuzzy">fuzzy</option>
                 <option value="exact">exact</option>
+                
             </select>
             <input type="submit" value="Submit" style="background-color: #4CAF50;">
         </form>
     </div>
 </p>
+<p class="card">
+   <% if (locals.searchTerm) { %>
+       <h2> Search Results for <%= searchTerm %> (<%= totalResults %> Objects found):</h2> 
+    <% } %>
+    <% if (error) { %>
+        <div class="error">
+            <strong>Error:</strong> <%= error %>
+        </div>
+    <% } else if (objects && objects.length > 0) { %>
+        <div class="results">
+             
+            <% objects.forEach((object, index) => { %>
+                <div class="object-item">
+                    <div class="object-number"><%= index + 1 %>.</div>
+                    <div class="object-details">
+                        <strong>Name:</strong> <%= object.name || 'Unknown' %>
+                        <% if (object.Type) { %>
+                            <br><strong>Type of Object:</strong> <%= object.Type %>
+                        <% } %>
+                        <% if (object.Sub_Type) { %>
+                            <br><strong>SubType:</strong> <%= object.Sub_Type %>
+                        <% } %>
+                        <% if (object.Right_Ascension) { %>
+                            <br><strong>Right Ascension:</strong> <%= object.Right_Ascension %>
+                        <% } %>
+                        <% if (object.Declination) { %>
+                            <br><strong>Declination:</strong> <%= object.Declination%>
+                        <% } %>
+                        
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    <% } else if (locals.searchTerm) { %>
+        <div class="no-results">
+            No objects found for "<%= searchTerm %>". Try a different search term.
+        </div>
+    <% } %>
+
+        
+    </p>
+</body>
 </html>

@@ -1,0 +1,63 @@
+.container {
+        max-width: 600px;
+        margin: 50px auto;
+        background-color: #5b62df;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        body {
+        font-family: Arial, sans-serif;
+        color: rgb(226, 17, 83);
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        background-image: url("/images/andromeda.jpg");
+        background-size: 100% 200%;
+        background-position: center;
+        background-repeat: no-repeat;
+        text-align: ;
+        }
+        
+    
+        form {
+        margin-top: 20px;
+        }
+        input[type="text"],
+        input[type="number"] {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+        }
+    
+        input[type="submit"] {
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        }
+.card {
+  background-size: 300px 200px;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: var(--card-width);
+  height: var(--card-height);
+  padding: 3px;
+  position: relative;
+  border-radius: 6px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  font-size: 1.5em;
+  color: rgb(155, 140, 224);
+  font-family: "Gloria Hallelujah", cursive;
+}
+.results {
+ 
+}
