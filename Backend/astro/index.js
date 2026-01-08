@@ -44,10 +44,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //Render the home page and clear previous data:
  
 app.get("/", (req, res) => {
+  getCurrentDate();
   res.render("index.ejs", { 
     objects: null,
     searchTerm: null,
     totalResults: 0,
+    currentDate: getCurrentDate(),
     error: null
   })
 });
@@ -86,8 +88,9 @@ app.post("/astro-submit", async (req, res) => {
           console.log("objectsArray:  " + JSON.stringify(objectsArray, null, 2));  
           res.render("index.ejs", { 
             objects: objectsArray, 
-            searchTerm: req.body.term,
+            searchTerm: capitalizeFirstLetter(req.body.term),
             totalResults: objectsArray.length,
+            currentDate: getCurrentDate(),
             error: null
           }); // Render index.ejs with the data
               
@@ -118,9 +121,11 @@ app.post("/astro-submit", async (req, res) => {
               errorMessage = "No activities match your criteria Gringo. Error: " + error.message;
               }
           console.log(errorMessage);
+          
           res.render("index.ejs", { 
             objects: null, 
-            error: errorMessage
+            error: errorMessage,
+            currentDate: getCurrentDate()
           });
         }
 });
@@ -156,3 +161,18 @@ function createObjectsArray(apiResponse) {
   
   return objectsArray;
 } 
+function getCurrentDate() { //get the current date to pass into the index.ejs file, partials footer.ejs.
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+        console.log `${month}/${year}`;
+        return `${month}/${year}`;  // Format: MM/YYYY
+}
+//capitalize 1st character
+function capitalizeFirstLetter(variable) {
+  if (!variable) {
+    return "no SearchTerm"
+  } else {
+    return variable.charAt(0).toUpperCase() + variable.slice(1);
+  }
+}
