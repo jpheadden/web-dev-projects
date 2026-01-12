@@ -32,7 +32,10 @@ app.get("/", (req, res) => {
 
     
   
-  res.render("index.ejs", { bandName: null, currentDate: getCurrentDate() }); // you can pass variables to ejs files this way.
+  res.render("index.ejs", { 
+	bandName: null, 
+	currentDate: getCurrentDate() 
+  }); // you can pass variables to ejs files this way.
 });
 
 app.post("/submit", (req, res) => {

@@ -3,6 +3,8 @@
  <%- include("partials/head.ejs") %>
    
 </head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <%- include("partials/header.ejs") %>
 <html>
     <body class="body">
@@ -20,7 +22,6 @@
                 <form method="POST" action="/astro-submit">
                     <label for="term">Name:</label>
                     <input type="text" id="term" name="term" required>
-                    
                     <label for="match_type">Search fuzzy or exact?</label>
                     <select id="match_type" name="match_type">
                         <option value="fuzzy">fuzzy</option>

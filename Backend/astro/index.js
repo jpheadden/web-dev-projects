@@ -1,10 +1,10 @@
-import express, { response } from "express";
+import express, { response } from "express"; //not used.
 import axios from "axios";
 import bodyParser from "body-parser";
 import dotenvx from "@dotenvx/dotenvx";
 import morgan from "morgan";
 
-
+dotenvx.config({ path: '.env' });
 const API_URL = "https://astronomyapi.com/api/v2/search";
 const API_Key = process.env.RAPIDAPI_KEY;
 // 2. Create an express app and set the port number.
@@ -14,10 +14,12 @@ const app = express();
 app.use(express.static("public")); 
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("common")); // Logging middleware
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.json());
+//app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json()); //
+app.set("view engine", "ejs"); //
 
-dotenvx.config({ path: '.env' });
+
+
 //console.log('Hello ${process.env.HELLO}');
 
 // Environment Variables Check
@@ -34,10 +36,7 @@ const applicationSecret = process.env.ASTROAPI_Secret;
 
 //const authString = Buffer.toString(`applicationId:applicationSecret`, "base64");
 //console.log("AuthString: " + authString);
-// Start the server
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -80,7 +79,7 @@ app.post("/astro-submit", async (req, res) => {
           console.log("Response Status:", response.status);
           console.log("Response Headers:", response.headers);
           //console.log("Result(response.data):", response.data) // Log the entire response data
-          console.log("API Response stringified:  " + JSON.stringify(apiResponse, null, 2));
+          // console.log("API Response stringified:  " + JSON.stringify(apiResponse, null, 2)); //Uncomment to see full response.
 
 
           // Loop through apiResponse and write the name and type.name of each object to an array called objectsArray:
@@ -97,7 +96,7 @@ app.post("/astro-submit", async (req, res) => {
     
           
         } catch (error) {
-               console.error("Failed to make request:", error.message);1
+               console.error("Failed to make request:", error.message);
                console.error("Error details:", {
                  status: error.response?.status,
                  statusText: error.response?.statusText,
@@ -129,7 +128,10 @@ app.post("/astro-submit", async (req, res) => {
           });
         }
 });
-
+// Start the server
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
 /*The function createObjectsArray takes the apiResponse, if it exists and has data, 
 iterates over it and parses out the name and id.name and puts this in objectsArray to be sent to index.ejs and presented
 to the user.
@@ -165,7 +167,7 @@ function getCurrentDate() { //get the current date to pass into the index.ejs fi
         const today = new Date();
         const year = today.getFullYear();
         const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are zero-based
-        console.log `${month}/${year}`;
+        console.log(`${month}/${year}`); // Log the current date in MM/YYYY format
         return `${month}/${year}`;  // Format: MM/YYYY
 }
 //capitalize 1st character
