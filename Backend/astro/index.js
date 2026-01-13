@@ -38,10 +38,18 @@ const applicationSecret = process.env.ASTROAPI_Secret;
 //console.log("AuthString: " + authString);
 
 
-app.use(bodyParser.urlencoded({ extended: true }));
+
+//routes:
 
 //Render the home page and clear previous data:
- 
+ app.get("/health", (req, res) => {
+  res.status(200).json({
+    status: "ok",
+    uptime: process.uptime(),
+    timestamp: new Date().toISOString()
+  });
+});
+
 app.get("/", (req, res) => {
   getCurrentDate();
   res.render("index.ejs", { 
