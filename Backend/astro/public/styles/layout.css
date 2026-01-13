@@ -10,6 +10,7 @@
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
         body {
+        flex-wrap: wrap;
         font-family: Arial, sans-serif;
         color: rgb(226, 17, 83);
         text-align: center;
@@ -23,7 +24,7 @@
         }
         
 .card {
-  flex: 1 1 300px; /*grow, shrink, minimum width */
+  display: flex ; 
   background-size: cover;
 
   background-position: center;

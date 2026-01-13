@@ -104,6 +104,15 @@ function createPostId(posts) {
 
 //  Routes:  Step 1: Render the home page "/" index.ejs
 //common http methods:  Get (resource from server), post (send data to the resouce), put (replace), patch (update), delete (remove)
+
+ app.get("/health", (req, res) => {
+  res.status(200).json({
+    status: "ok",
+    uptime: process.uptime(),
+    timestamp: new Date().toISOString()
+  });
+});
+
 app.get("/", (req, res) => {
   const posts = loadPosts() // load posts newest first
   //checking if posts exist and is an array and has length.
