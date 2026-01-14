@@ -19,7 +19,7 @@ footer {
 
 .container {
   padding: 1rem;
-  max-width: 1200px;
+  max-width: auto;
   margin: 0 auto;
   min-height: calc(100vh - 200px);
 }
@@ -88,12 +88,12 @@ footer {
   display: flex;
   justify-content: center;
   padding: 2rem 1rem;
-  width: 100%;
+  width: auto
 }
 
 .editor-panel {
-  width: 100%;
-  max-width: 700px;
+  width: auto;
+
   background: rgba(255,255,255,0.95);
   color: #333;
   padding: 1.5rem;
@@ -117,7 +117,7 @@ footer {
 
 .editor-field input,
 .editor-field textarea {
-  width: 100%;
+  width: auto;
   padding: 0.75rem;
   border: 1px solid #ccc;
   border-radius: 6px;

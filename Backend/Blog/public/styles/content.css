@@ -51,7 +51,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: auto;
   overflow: auto;
 }
 .post-content {
@@ -73,12 +73,11 @@
   pointer-events: auto;
 }
 
-.post-content-section .editor-panel {
-  width: 75%; /* Set form width to 75% */
-  max-width: 75%;
-  margin: 0 auto; /* Center the form */
-}
 
+.post-content-section.\.editor-panel {
+  width: 80vw;
+  height: 80vh;
+}
 
 .scrollable-content {
   max-height: 600px;
