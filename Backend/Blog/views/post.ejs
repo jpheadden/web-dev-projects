@@ -22,10 +22,17 @@
           <h1 class="post-title"><%= post.title %></h1>
         </div>
 
-        <!-- Post Content -->
+        <!-- Post Content  added structure for paragraphs to make it more readable -->
         <div class="post-content-section">
-          <div class="post-content-box scrollable-content">
-            <p class="post-content"><%= post.content %></p>
+          <div class="editor-panel">
+            <div class="editor-field">
+              <label>Content</label>
+              <div class="content-display">
+                <%- post.content.split('\n\n').map(paragraph => 
+                  paragraph.trim() ? `<p>${paragraph.replace(/\n/g, '<br>')}</p>` : ''
+                ).filter(p => p).join('') %>
+              </div>
+            </div>
           </div>
         </div>
 
